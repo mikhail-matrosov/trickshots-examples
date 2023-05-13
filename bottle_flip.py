@@ -7,9 +7,9 @@ def scenario():
     set_avel(bottle, [0, -5, 0])
     set_vel(bottle, var3([0,0,0], [10, 0, 10]))
     yield hit(bottle, 'target')  # 'ground'
-    yield minimize(bottle.matrix_world.to_quaternion().angle) & delay(10)
-    yield minimize(bottle.matrix_world.to_quaternion().angle) & hit(bottle, 'trigger')
-    yield minimize(bottle.matrix_world.to_quaternion().angle) & (wait_deactivation(bottle) | delay(100))
+    yield least_squares(bottle.matrix_world.to_quaternion().angle) & delay(10)
+    yield least_squares(bottle.matrix_world.to_quaternion().angle) & hit(bottle, 'trigger')
+    yield least_squares(bottle.matrix_world.to_quaternion().angle) & (wait_deactivation(bottle) | delay(100))
     yield hit(bottle, 'trigger')
 
 def escape():
